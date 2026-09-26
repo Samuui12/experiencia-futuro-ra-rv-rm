@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FUTURE WORLD | RA · RV · RM</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --cyan:#00f6ff;
+    --blue:#4775ff;
+    --purple:#a855f7;
+    --green:#38ff9b;
+    --pink:#ff43d0;
+    --dark:#02050b;
+    --panel:rgba(7,14,28,.88);
+    --border:rgba(0,246,255,.30);
+    --text:#effcff;
+    --muted:#91a7b8;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,#06243c,transparent 30%),
+        radial-gradient(circle at 90% 20%,#26083f,transparent 30%),
+        var(--dark);
+    color:var(--text);
+    min-height:100vh;
+}
+
+/* GRID FUTURISTA */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    pointer-events:none;
+
+    background-image:
+        linear-gradient(rgba(0,246,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,246,255,.035) 1px,transparent 1px);
+
+    background-size:50px 50px;
+}
+
+/* HEADER */
+
+header{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    padding:40px 20px;
+}
+
+.hero{
+    max-width:1000px;
+    z-index:2;
+}
+
+.badge{
+    display:inline-block;
+    border:1px solid var(--cyan);
+    padding:10px 20px;
+    border-radius:30px;
+    color:var(--cyan);
+    font-size:12px;
+    letter-spacing:3px;
+    margin-bottom:25px;
+    box-shadow:0 0 25px rgba(0,246,255,.15);
+}
+
+h1{
+    font-size:clamp(45px,8vw,100px);
+    line-height:.9;
+    letter-spacing:8px;
+
+    background:linear-gradient(
+        90deg,
+        var(--cyan),
+        white,
+        var(--purple)
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero h2{
+    margin-top:25px;
+    font-size:30px;
+}
+
+.hero p{
+    max-width:750px;
+    margin:25px auto;
+    color:var(--muted);
+    line-height:1.8;
+    font-size:17px;
+}
+
+.start{
+    display:inline-block;
+    padding:16px 30px;
+    border:1px solid var(--cyan);
+    border-radius:10px;
+    color:white;
+    text-decoration:none;
+    background:rgba(0,246,255,.08);
+    transition:.3s;
+}
+
+.start:hover{
+    background:var(--cyan);
+    color:#001016;
+    box-shadow:0 0 40px rgba(0,246,255,.6);
+}
+
+/* ORBITAS */
+
+.orbit{
+    position:absolute;
+    border:1px solid rgba(0,246,255,.12);
+    border-radius:50%;
+    animation:rotate 20s linear infinite;
+}
+
+.orbit::after{
+    content:"";
+    position:absolute;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 25px var(--cyan);
+}
+
+.o1{
+    width:500px;
+    height:500px;
+    left:-200px;
+    top:10%;
+}
+
+.o1::after{
+    top:30px;
+    left:50%;
+}
+
+.o2{
+    width:600px;
+    height:600px;
+    right:-250px;
+    bottom:-150px;
+    animation-direction:reverse;
+}
+
+.o2::after{
+    bottom:40px;
+    left:50%;
+}
+
+@keyframes rotate{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* MAIN */
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:60px 20px 100px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title span{
+    color:var(--cyan);
+    letter-spacing:4px;
+    font-size:12px;
+}
+
+.section-title h2{
+    font-size:42px;
+    margin-top:12px;
+}
+
+.section-title p{
+    max-width:750px;
+    margin:15px auto;
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* MODOS */
+
+.mode-selector{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-bottom:50px;
+}
+
+.mode{
+    padding:25px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.mode:hover,
+.mode.active{
+    border-color:var(--cyan);
+    transform:translateY(-5px);
+    box-shadow:0 0 30px rgba(0,246,255,.15);
+}
+
+.mode .emoji{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.mode h3{
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.mode p{
+    color:var(--muted);
+    line-height:1.5;
+    font-size:14px;
+}
+
+/* PANEL PRINCIPAL */
+
+.experience{
+    border:1px solid var(--border);
+    border-radius:25px;
+    overflow:hidden;
+    background:rgba(3,8,18,.95);
+    box-shadow:0 0 60px rgba(0,246,255,.08);
+}
+
+.topbar{
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.live{
+    color:var(--green);
+    font-size:11px;
+    letter-spacing:2px;
+}
+
+.content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+}
+
+/* VISUAL */
+
+.visual{
+    min-height:500px;
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at 70% 20%,rgba(0,246,255,.2),transparent 25%),
+        linear-gradient(180deg,#061b2d,#02050b);
+}
+
+/* ESTRELLAS */
+
+.stars{
+    position:absolute;
+    inset:0;
+
+    background-image:
+        radial-gradient(circle,#fff 1px,transparent 1px),
+        radial-gradient(circle,var(--cyan) 1px,transparent 1px);
+
+    background-size:70px 70px,120px 120px;
+    opacity:.3;
+}
+
+/* PLANETA */
+
+.planet{
+    position:absolute;
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    right:60px;
+    top:50px;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            #b9ffff,
+            #19788d 45%,
+            #03121d 75%
+        );
+
+    box-shadow:
+        0 0 45px rgba(0,246,255,.5);
+}
+
+/* CIUDAD */
+
+.city{
+    position:absolute;
+    bottom:70px;
+    left:0;
+    right:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:end;
+    gap:7px;
+}
+
+.building{
+    width:50px;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            #082c40 0 13px,
+            #00eaff 14px 16px
+        );
+
+    border:1px solid var(--cyan);
+}
+
+.building:nth-child(1){height:90px;}
+.building:nth-child(2){height:150px;}
+.building:nth-child(3){height:110px;}
+.building:nth-child(4){height:200px;}
+.building:nth-child(5){height:160px;}
+.building:nth-child(6){height:125px;}
+.building:nth-child(7){height:185px;}
+.building:nth-child(8){height:100px;}
+
+/* HOLOGRAMA */
+
+.hologram{
+    position:absolute;
+
+    width:190px;
+    height:190px;
+
+    left:50%;
+    top:45%;
+
+    transform:translate(-50%,-50%);
+
+    border:2px solid var(--cyan);
+    border-radius:50%;
+
+    box-shadow:
+        0 0 35px var(--cyan),
+        inset 0 0 35px rgba(0,246,255,.2);
+
+    animation:pulse 2s infinite;
+}
+
+.hologram::before{
+    content:"";
+    position:absolute;
+    inset:25px;
+    border:1px dashed var(--cyan);
+    border-radius:50%;
+}
+
+.hologram::after{
+    content:"";
+    position:absolute;
+    inset:55px;
+    border:1px solid var(--cyan);
+    border-radius:50%;
+}
+
+@keyframes pulse{
+
+    50%{
+        transform:
+        translate(-50%,-50%)
+        scale(1.08);
+
+        opacity:.65;
+    }
+
+}
+
+/* CARRETERA */
+
+.road{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:70px;
+    background:#050b12;
+    border-top:1px solid var(--cyan);
+}
+
+.road::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    top:35px;
+    border-top:2px dashed white;
+    opacity:.4;
+}
+
+/* INFORMACIÓN */
+
+.info{
+    padding:40px;
+    background:rgba(6,12,25,.8);
+}
+
+.tag{
+    display:inline-block;
+    border:1px solid var(--cyan);
+    color:var(--cyan);
+    border-radius:20px;
+    padding:7px 13px;
+    font-size:11px;
+    letter-spacing:2px;
+}
+
+.info h2{
+    font-size:35px;
+    margin:25px 0 15px;
+}
+
+.definition{
+    color:#d9e9f1;
+    line-height:1.8;
+}
+
+.explanation{
+    margin-top:25px;
+    padding:20px;
+    background:rgba(0,246,255,.04);
+    border-left:3px solid var(--cyan);
+}
+
+.explanation strong{
+    display:block;
+    color:var(--cyan);
+    margin-bottom:8px;
+}
+
+.explanation p{
+    color:var(--muted);
+    line-height:1.6;
+}
+
+.data{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:25px;
+}
+
+.data div{
+    padding:15px;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:10px;
+}
+
+.data small{
+    display:block;
+    color:#71889a;
+    margin-bottom:5px;
+}
+
+.data strong{
+    font-size:13px;
+}
+
+/* BOTONES */
+
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:25px;
+}
+
+button{
+    cursor:pointer;
+    padding:12px 17px;
+    border-radius:8px;
+    border:1px solid rgba(0,246,255,.4);
+    background:rgba(0,246,255,.06);
+    color:white;
+    transition:.2s;
+}
+
+button:hover{
+    background:var(--cyan);
+    color:#001016;
+}
+
+/* =====================================================
+   CUATRO CONCEPTOS
+===================================================== */
+
+.concepts{
+    margin-top:90px;
+}
+
+.concept-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.concept{
+    padding:30px;
+    background:var(--panel);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:18px;
+    transition:.3s;
+}
+
+.concept:hover{
+    transform:translateY(-5px);
+    border-color:var(--cyan);
+}
+
+.concept-icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.concept h3{
+    font-size:25px;
+    margin-bottom:15px;
+}
+
+.concept h4{
+    color:var(--cyan);
+    margin-top:20px;
+    margin-bottom:8px;
+}
+
+.concept p{
+    color:var(--muted);
+    line-height:1.7;
+    font-size:14px;
+}
+
+.example{
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    background:rgba(0,246,255,.04);
+}
+
+.example strong{
+    color:var(--green);
+}
+
+/* VIDEO */
+
+.video-section{
+    margin-top:90px;
+    text-align:center;
+}
+
+.video-box{
+    max-width:850px;
+    margin:30px auto;
+    min-height:280px;
+    border:1px dashed var(--cyan);
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+        radial-gradient(circle,rgba(0,246,255,.08),transparent 60%);
+}
+
+.video-box div{
+    max-width:600px;
+    padding:30px;
+}
+
+.video-box h3{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.video-box p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* CONCLUSIÓN */
+
+.conclusion{
+    margin-top:90px;
+    padding:50px 30px;
+    text-align:center;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:
+        radial-gradient(circle,rgba(0,246,255,.08),transparent 60%);
+}
+
+.conclusion h2{
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+.conclusion p{
+    max-width:800px;
+    margin:auto;
+    color:var(--muted);
+    line-height:1.8;
+}
+
+/* FOOTER */
+
+footer{
+    padding:50px 20px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.06);
+    color:#647b8d;
+    font-size:12px;
+    line-height:1.8;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+    .mode-selector,
+    .content,
+    .concept-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info{
+        padding:25px;
+    }
+
+}
+
+@media(max-width:550px){
+
+    h1{
+        letter-spacing:3px;
+    }
+
+    .data{
+        grid-template-columns:1fr;
+    }
+
+    .planet{
+        width:110px;
+        height:110px;
+        right:20px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     PORTADA
+===================================================== -->
+
+<header>
+
+<div class="orbit o1"></div>
+<div class="orbit o2"></div>
+
+<div class="hero">
+
+    <div class="badge">
+        NEO FUTURE SYSTEM // 2050
+    </div>
+
+    <h1>
+        FUTURE<br>WORLD
+    </h1>
+
+    <h2>
+        RA · RV · RM
+    </h2>
+
+    <p>
+        Una experiencia interactiva para comprender cómo
+        las tecnologías inmersivas están transformando
+        nuestra relación con el mundo físico y digital.
+    </p>
+
+    <a href="#experiencia" class="start">
+        INICIAR EXPERIENCIA →
+    </a>
+
+</div>
+
+</header>
+
+
+<main id="experiencia">
+
+
+<!-- =====================================================
+     INTRODUCCIÓN
+===================================================== -->
+
+<section class="section-title">
+
+<span>EXPERIENCIA INMERSIVA</span>
+
+<h2>
+    Explora el futuro
+</h2>
+
+<p>
+    Selecciona una tecnología para descubrir cómo funciona
+    y después explora los cuatro conceptos fundamentales:
+    Gemelos Digitales, Ciudades Inteligentes,
+    Sostenibilidad Ambiental e Hiperconectividad.
+</p>
+
+</section>
+
+
+<!-- =====================================================
+     RA RV RM
+===================================================== -->
+
+<section class="mode-selector">
+
+<div class="mode active"
+onclick="changeMode('RA',this)">
+
+<div class="emoji">📱</div>
+
+<h3>
+Realidad Aumentada
+</h3>
+
+<p>
+Añade información digital sobre el mundo real.
+</p>
+
+</div>
+
+
+<div class="mode"
+onclick="changeMode('RV',this)">
+
+<div class="emoji">🥽</div>
+
+<h3>
+Realidad Virtual
+</h3>
+
+<p>
+Transporta al usuario hacia un entorno completamente digital.
+</p>
+
+</div>
+
+
+<div class="mode"
+onclick="changeMode('RM',this)">
+
+<div class="emoji">🌐</div>
+
+<h3>
+Realidad Mixta
+</h3>
+
+<p>
+Combina objetos físicos y digitales permitiendo interacción.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     VISUALIZADOR
+===================================================== -->
+
+<section class="experience">
+
+<div class="topbar">
+
+<span>
+NEO-FUTURE VISUALIZER
+</span>
+
+<span class="live">
+● SISTEMA ACTIVO
+</span>
+
+</div>
+
+
+<div class="content">
+
+
+<!-- ESCENA -->
+
+<div class="visual">
+
+<div class="stars"></div>
+
+<div class="planet"></div>
+
+<div class="hologram"></div>
+
+
+<div class="city">
+
+<div class="building"></div>
+<div class="building"></div>
+<div class="building"></div>
+<div class="building"></div>
+<div class="building"></div>
+<div class="building"></div>
+<div class="building"></div>
+<div class="building"></div>
+
+</div>
+
+
+<div class="road"></div>
+
+</div>
+
+
+<!-- INFORMACIÓN -->
+
+<div class="info">
+
+<span class="tag" id="tag">
+RA // AUGMENTED
+</span>
+
+<h2 id="modeTitle">
+Realidad Aumentada
+</h2>
+
+<p class="definition" id="definition">
+
+La Realidad Aumentada incorpora elementos digitales
+sobre el entorno físico que observa el usuario.
+
+</p>
+
+
+<div class="explanation">
+
+<strong>
+¿QUÉ SIGNIFICA?
+</strong>
+
+<p id="meaning">
+
+El mundo real continúa presente, pero ahora podemos
+ver información digital integrada en él.
+
+</p>
+
+</div>
+
+
+<div class="data">
+
+<div>
+
+<small>ENTORNO</small>
+
+<strong id="environment">
+Mundo real
+</strong>
+
+</div>
+
+
+<div>
+
+<small>INTERACCIÓN</small>
+
+<strong id="interaction">
+Digital + físico
+</strong>
+
+</div>
+
+
+<div>
+
+<small>DISPOSITIVO</small>
+
+<strong id="device">
+Celular / gafas
+</strong>
+
+</div>
+
+
+<div>
+
+<small>EJEMPLO</small>
+
+<strong id="example">
+Navegación
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="buttons">
+
+<button onclick="speak()">
+🔊 Escuchar
+</button>
+
+<button onclick="stopVoice()">
+⏹ Detener
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     LOS CUATRO CONCEPTOS
+===================================================== -->
+
+<section class="concepts">
+
+<div class="section-title">
+
+<span>BASE DE CONOCIMIENTO</span>
+
+<h2>
+Los 4 conceptos del futuro
+</h2>
+
+<p>
+Interactúa con cada concepto para comprender su
+significado, definición y aplicación en el mundo real.
+</p>
+
+</div>
+
+
+<div class="concept-grid">
+
+
+<!-- GEMELOS DIGITALES -->
+
+<article class="concept">
+
+<div class="concept-icon">
+🧩
+</div>
+
+<h3>
+Gemelos Digitales
+</h3>
+
+<h4>
+¿Qué es?
+</h4>
+
+<p>
+Un Gemelo Digital es una representación virtual de un
+objeto, proceso, sistema o entorno físico que utiliza
+datos para representar y analizar su comportamiento.
+</p>
+
+<h4>
+Definición
+</h4>
+
+<p>
+Es un modelo digital conectado con un elemento real,
+capaz de recibir información y utilizarla para realizar
+simulaciones, análisis y seguimiento.
+</p>
+
+<h4>
+¿Para qué sirve?
+</h4>
+
+<p>
+Permite monitorear sistemas, detectar posibles problemas,
+realizar simulaciones y analizar diferentes escenarios
+antes de intervenir físicamente.
+</p>
+
+<div class="example">
+
+<strong>💡 Ejemplo:</strong>
+
+<p>
+Una ciudad puede crear un gemelo digital de un puente
+para analizar su estructura y planificar mantenimiento.
+</p>
+
+</div>
+
+</article>
+
+
+<!-- CIUDADES INTELIGENTES -->
+
+<article class="concept">
+
+<div class="concept-icon">
+🏙️
+</div>
+
+<h3>
+Ciudades Inteligentes
+</h3>
+
+<h4>
+¿Qué es?
+</h4>
+
+<p>
+Una Ciudad Inteligente utiliza tecnologías digitales,
+sensores y datos para mejorar la gestión de los servicios
+urbanos.
+</p>
+
+<h4>
+Definición
+</h4>
+
+<p>
+Es un modelo de ciudad que utiliza tecnología e información
+para gestionar recursos, movilidad, infraestructura,
+seguridad y servicios públicos.
+</p>
+
+<h4>
+¿Para qué sirve?
+</h4>
+
+<p>
+Puede ayudar a analizar el tráfico, optimizar recursos,
+gestionar iluminación, mejorar servicios y facilitar
+la toma de decisiones.
+</p>
+
+<div class="example">
+
+<strong>💡 Ejemplo:</strong>
+
+<p>
+Semáforos inteligentes que analizan el tráfico para
+adaptar los tiempos de circulación.
+</p>
+
+</div>
+
+</article>
+
+
+<!-- SOSTENIBILIDAD -->
+
+<article class="concept">
+
+<div class="concept-icon">
+🌱
+</div>
+
+<h3>
+Sostenibilidad Ambiental
+</h3>
+
+<h4>
+¿Qué es?
+</h4>
+
+<p>
+La sostenibilidad ambiental busca utilizar los recursos
+naturales de forma responsable y reducir los impactos
+negativos sobre el medio ambiente.
+</p>
+
+<h4>
+Definición
+</h4>
+
+<p>
+Consiste en satisfacer las necesidades actuales sin
+comprometer la capacidad de las futuras generaciones
+para satisfacer sus propias necesidades.
+</p>
+
+<h4>
+¿Para qué sirve?
+</h4>
+
+<p>
+Ayuda a reducir desperdicios, optimizar el uso de energía,
+proteger recursos naturales y promover soluciones
+ambientalmente responsables.
+</p>
+
+<div class="example">
+
+<strong>💡 Ejemplo:</strong>
+
+<p>
+Edificios inteligentes que controlan automáticamente
+el consumo de energía.
+</p>
+
+</div>
+
+</article>
+
+
+<!-- HIPERCONECTIVIDAD -->
+
+<article class="concept">
+
+<div class="concept-icon">
+📡
+</div>
+
+<h3>
+Hiperconectividad
+</h3>
+
+<h4>
+¿Qué es?
+</h4>
+
+<p>
+La hiperconectividad describe un entorno donde personas,
+dispositivos, sistemas y servicios permanecen conectados
+continuamente mediante redes digitales.
+</p>
+
+<h4>
+Definición
+</h4>
+
+<p>
+Es la capacidad de mantener múltiples conexiones digitales
+simultáneas para intercambiar información prácticamente
+en tiempo real.
+</p>
+
+<h4>
+¿Para qué sirve?
+</h4>
+
+<p>
+Permite conectar sensores, vehículos, teléfonos,
+sistemas industriales y servicios para compartir
+información.
+</p>
+
+<div class="example">
+
+<strong>💡 Ejemplo:</strong>
+
+<p>
+Un vehículo conectado que recibe información del tráfico
+y comunica datos a otros sistemas.
+</p>
+
+</div>
+
+</article>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     VIDEO
+===================================================== -->
+
+<section class="video-section">
+
+<div class="section-title">
+
+<span>CONTENIDO MULTIMEDIA</span>
+
+<h2>
+El futuro también se puede ver
+</h2>
+
+<p>
+Esta sección está preparada para incorporar un video
+explicativo sobre RA, RV, RM y las tecnologías emergentes.
+</p>
+
+</div>
+
+
+<div class="video-box">
+
+<div>
+
+<h3>
+🎬 Video interactivo
+</h3>
+
+<p>
+Puedes reemplazar este espacio por un video de YouTube
+relacionado con realidad aumentada, realidad virtual,
+realidad mixta o ciudades inteligentes.
+</p>
+
+<br>
+
+<button onclick="insertVideo()">
+▶ Cargar video
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CONCLUSIÓN
+===================================================== -->
+
+<section class="conclusion">
+
+<h2>
+🌎 Un futuro conectado
+</h2>
+
+<p>
+La Realidad Aumentada, la Realidad Virtual y la Realidad
+Mixta representan diferentes formas de combinar nuestra
+experiencia física con información digital. Estas
+tecnologías pueden relacionarse con conceptos como
+Gemelos Digitales, Ciudades Inteligentes, Sostenibilidad
+Ambiental e Hiperconectividad para crear nuevas formas
+de aprender, trabajar, analizar información y comprender
+nuestro entorno.
+</p>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<strong>
+FUTURE WORLD // EXPERIENCIA INMERSIVA
+</strong>
+
+<br>
+
+Proyecto académico sobre Realidad Aumentada,
+Realidad Virtual y Realidad Mixta.
+
+<br><br>
+
+Conceptos:
+Gemelos Digitales · Ciudades Inteligentes ·
+Sostenibilidad Ambiental · Hiperconectividad
+
+<br><br>
+
+HTML + CSS + JavaScript · Sin librerías externas
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   INFORMACIÓN RA RV RM
+===================================================== */
+
+const modes = {
+
+RA:{
+
+tag:"RA // AUGMENTED",
+
+title:"Realidad Aumentada",
+
+definition:
+"La Realidad Aumentada incorpora elementos digitales sobre el entorno físico que observa el usuario.",
+
+meaning:
+"El mundo real continúa presente, pero ahora podemos visualizar información digital integrada sobre él.",
+
+environment:"Mundo real",
+
+interaction:"Digital + físico",
+
+device:"Celular / gafas",
+
+example:"Navegación"
+
+},
+
+RV:{
+
+tag:"RV // VIRTUAL",
+
+title:"Realidad Virtual",
+
+definition:
+"La Realidad Virtual crea un entorno completamente digital en el que el usuario puede interactuar mediante dispositivos especializados.",
+
+meaning:
+"El usuario entra en una experiencia digital que reemplaza su percepción directa del entorno físico.",
+
+environment:"Mundo virtual",
+
+interaction:"Dentro del entorno digital",
+
+device:"Visor VR",
+
+example:"Simuladores"
+
+},
+
+RM:{
+
+tag:"RM // MIXED",
+
+title:"Realidad Mixta",
+
+definition:
+"La Realidad Mixta combina elementos digitales con el entorno físico permitiendo que ambos interactúen.",
+
+meaning:
+"Los objetos virtuales pueden reconocer el espacio físico y comportarse dentro de él, creando una experiencia híbrida.",
+
+environment:"Real + digital",
+
+interaction:"Físico ↔ digital",
+
+device:"Visor MR",
+
+example:"Objetos holográficos"
+
+}
+
+};
+
+
+/* =====================================================
+   CAMBIAR MODO
+===================================================== */
+
+let currentMode="RA";
+
+function changeMode(mode,element){
+
+currentMode=mode;
+
+const data=modes[mode];
+
+document.getElementById("tag").textContent=data.tag;
+
+document.getElementById("modeTitle").textContent=data.title;
+
+document.getElementById("definition").textContent=
+data.definition;
+
+document.getElementById("meaning").textContent=
+data.meaning;
+
+document.getElementById("environment").textContent=
+data.environment;
+
+document.getElementById("interaction").textContent=
+data.interaction;
+
+document.getElementById("device").textContent=
+data.device;
+
+document.getElementById("example").textContent=
+data.example;
+
+
+/* ACTIVAR TARJETA */
+
+document.querySelectorAll(".mode")
+.forEach(item=>{
+item.classList.remove("active");
+});
+
+element.classList.add("active");
+
+
+/* CAMBIAR AMBIENTE */
+
+const visual=document.querySelector(".visual");
+
+if(mode==="RA"){
+
+visual.style.background=
+"radial-gradient(circle at 70% 20%,rgba(0,246,255,.2),transparent 25%),linear-gradient(180deg,#061b2d,#02050b)";
+
+}
+
+if(mode==="RV"){
+
+visual.style.background=
+"radial-gradient(circle at 50% 40%,rgba(168,85,247,.25),transparent 30%),linear-gradient(180deg,#17052d,#02050b)";
+
+}
+
+if(mode==="RM"){
+
+visual.style.background=
+"radial-gradient(circle at 50% 40%,rgba(56,255,155,.2),transparent 30%),linear-gradient(180deg,#05271f,#02050b)";
+
+}
+
+}
+
+
+/* =====================================================
+   LECTURA
+===================================================== */
+
+function speak(){
+
+if(!("speechSynthesis" in window)){
+
+alert(
+"Tu navegador no soporta lectura por voz."
+);
+
+return;
+
+}
+
+speechSynthesis.cancel();
+
+const data=modes[currentMode];
+
+const text=
+data.title+
+". "+
+data.definition+
+" "+
+data.meaning;
+
+const voice=
+new SpeechSynthesisUtterance(text);
+
+voice.lang="es-CO";
+
+voice.rate=.9;
+
+speechSynthesis.speak(voice);
+
+}
+
+
+/* =====================================================
+   DETENER
+===================================================== */
+
+function stopVoice(){
+
+if("speechSynthesis" in window){
+
+speechSynthesis.cancel();
+
+}
+
+}
+
+
+/* =====================================================
+   VIDEO
+===================================================== */
+
+function insertVideo(){
+
+const box=document.querySelector(".video-box");
+
+box.innerHTML=`
+
+<div style="width:100%;">
+
+<h3 style="margin-bottom:20px;">
+🎬 Video multimedia
+</h3>
+
+<iframe
+width="100%"
+height="400"
+src="https://www.youtube.com/embed/6Xfoy4Z0JpI"
+title="Realidad aumentada y tecnologías inmersivas"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+</div>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
